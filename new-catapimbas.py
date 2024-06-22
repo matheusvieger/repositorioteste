@@ -1,4 +1,4 @@
-sudo pip3 install scikit-learn
+pip install -r requirements.txt
 
 import streamlit as st
 import pandas as pd
