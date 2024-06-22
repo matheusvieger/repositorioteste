@@ -6,6 +6,8 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
+st.set_page_config(page_title='Catapimbas: Modelo Preditivo de Vendas', page_icon='🚗')
+
 df_inicial = pd.read_csv('obt_vendas.csv')
 
 f = '%Y-%m-%d %H:%M:%S UTC'
