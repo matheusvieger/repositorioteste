@@ -6,9 +6,35 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
+# Título do Aplicativo
 st.set_page_config(page_title='Catapimbas: Modelo Preditivo de Vendas', page_icon='🚗')
+st.title('🚗 Catapimbas: Modelo Preditivo de Vendas')
 
-df_inicial = pd.read_csv('obt_vendas.csv')
+with st.expander('Sobre este Aplicativo'):
+  st.markdown('**O aplicativo propõe integrar todos os dados de entrada no modelo preditivo que vai entregar, de forma visual e inteligente, diversos insight para tomada estretégica de decisão.**')
+  st.info('Este aplicativo auxilia o usuário a construir um modelo preditivo utilizando o conceito de regressão. Basta adicionar o seu arquivo base e ver a magia acontecer diante dos seus olhos!')
+
+  st.markdown('**Como usar este aplicativo?**')
+  st.warning('É muito simples. A sua esquerda, no tópico 01, você irá adicionar a sua base de estudo. No tópico 02, é onde serão ajustado os parâmetros do modelo. Como resultado, o modelo será iniciados, apresentando seus resultados e permitindo que você faça os downloads dos modelos gerados.')
+
+  st.markdown('**Vem ver por baixo dos panos:**')
+  st.markdown('Bibliotecas utilizadas:')
+  st.code('''- Pandas para fazer a análise exploratória;
+- Scikit-learn para construir o modelo de machine learning;
+- Altair para criação visual das apresentações;
+- Streamlit para criação da interface final do usuário.
+  ''', language='markdown')
+
+
+# Criação da barra lateral para colocar os dados de entrada
+with st.sidebar:
+    # Database
+    st.header('1. Database de Entrada')
+
+    st.markdown('**Use sua base de dados**')
+    arquivo_upload = st.file_uploader("Faça o upload do seu csv aqui:")
+    if arquivo_upload is not None:
+        df = pd.read_csv(arquivo_upload, index_col=False)
 
 f = '%Y-%m-%d %H:%M:%S UTC'
 
